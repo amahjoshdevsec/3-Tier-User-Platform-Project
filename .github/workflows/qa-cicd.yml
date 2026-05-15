@@ -8,9 +8,9 @@ on:
       - client/**
       - server/**
       - .github/workflows/qa-cicd.yml
-#permissions:
-  #contents: write
-  #id-token: write
+permissions:
+  contents: write
+  id-token: write
   
 jobs:
   gitleaks-scan:
