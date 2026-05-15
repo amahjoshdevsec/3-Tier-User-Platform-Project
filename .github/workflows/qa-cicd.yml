@@ -418,8 +418,8 @@ jobs:
           load: true
           push: false
           tags: |
-            devopsshack/nodejs-app:${{ github.sha }}
-            devopsshack/nodejs-app:latest
+            amahjosh90/nodejs-app:${{ github.sha }}
+            amahjosh90/nodejs-app:latest
 
       - name: Install Trivy
         uses: aquasecurity/setup-trivy@v0.2.6
@@ -434,7 +434,7 @@ jobs:
 
       - name: Run Trivy image scan (JSON)
         run: |
-          trivy image devopsshack/nodejs-app:${{ github.sha }} \
+          trivy image amahjosh90/nodejs-app:${{ github.sha }} \
             --format json \
             --output image-trivy-report.json \
             --severity HIGH,CRITICAL \
@@ -443,7 +443,7 @@ jobs:
 
       - name: Run Trivy image scan (TABLE)
         run: |
-          trivy image devopsshack/nodejs-app:${{ github.sha }} \
+          trivy image amahjosh90/nodejs-app:${{ github.sha }} \
             --format table \
             --severity HIGH,CRITICAL \
             --ignore-unfixed \
@@ -474,7 +474,7 @@ jobs:
       - name: Generate image SBOM
         uses: anchore/sbom-action@v0
         with:
-          image: devopsshack/nodejs-app:${{ github.sha }}
+          image: amahjosh90/nodejs-app:${{ github.sha }}
           format: spdx-json
           output-file: image-sbom.spdx.json
           upload-artifact: true  
