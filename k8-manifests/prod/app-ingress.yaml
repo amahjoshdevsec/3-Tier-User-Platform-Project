@@ -8,11 +8,11 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
     alb.ingress.kubernetes.io/ssl-redirect: '443'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-south-1:551322107788:certificate/8f6cd000-86e2-409e-9986-f5cbd335d5f8
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:214745599312:certificate/07420a69-2ee8-49f0-94df-bece8f4caac5
 spec:
   ingressClassName: alb
   rules:
-    - host: adityajaiswal.com
+    - host: houstonluxrhub.com
       http:
         paths:
           - path: /
