@@ -365,7 +365,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
           
       - name: "Example show SonarQube Quality Gate Status value"
-        run: echo "The Quality Gate status is ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
+        run: echo "The Quality Gate status are ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
 
   client-build:
     name: Client Build
@@ -418,8 +418,8 @@ jobs:
           load: true
           push: false
           tags: |
-            devopsshack/nodejs-app:${{ github.sha }}
-            devopsshack/nodejs-app:latest
+            amahjosh90/nodejs-app:${{ github.sha }}
+            amahjosh90/nodejs-app:latest
 
       - name: Install Trivy
         uses: aquasecurity/setup-trivy@v0.2.6
@@ -434,7 +434,7 @@ jobs:
 
       - name: Run Trivy image scan (JSON)
         run: |
-          trivy image devopsshack/nodejs-app:${{ github.sha }} \
+          trivy image amahjosh90/nodejs-app:${{ github.sha }} \
             --format json \
             --output image-trivy-report.json \
             --severity HIGH,CRITICAL \
@@ -443,7 +443,7 @@ jobs:
 
       - name: Run Trivy image scan (TABLE)
         run: |
-          trivy image devopsshack/nodejs-app:${{ github.sha }} \
+          trivy image amahjosh90/nodejs-app:${{ github.sha }} \
             --format table \
             --severity HIGH,CRITICAL \
             --ignore-unfixed \
@@ -474,7 +474,7 @@ jobs:
       - name: Generate image SBOM
         uses: anchore/sbom-action@v0
         with:
-          image: devopsshack/nodejs-app:${{ github.sha }}
+          image: amahjosh90/nodejs-app:${{ github.sha }}
           format: spdx-json
           output-file: image-sbom.spdx.json
           upload-artifact: true  
@@ -484,8 +484,8 @@ jobs:
         with:
           push: true
           tags: |
-            devopsshack/nodejs-app:${{ github.sha }}
-            devopsshack/nodejs-app:latest
+            amahjosh90/nodejs-app:${{ github.sha }}
+            amahjosh90/nodejs-app:latest
 
 
   update-qa-manifest:
@@ -501,7 +501,7 @@ jobs:
           ref: qa
       - name: Update image tag in manifest
         run: |
-          sed -i "s|image: devopsshack/nodejs-app:.*|image: devopsshack/nodejs-app:${GITHUB_SHA}|g" k8-manifests/qa/app-deployment.yaml
+          sed -i "s|image: amahjosh90/nodejs-app:.*|image: amahjosh90/nodejs-app:${GITHUB_SHA}|g" k8-manifests/qa/app-deployment.yaml
       - name: Show updated manifest (debug)
         run: |
           cat k8-manifests/qa/app-deployment.yaml
