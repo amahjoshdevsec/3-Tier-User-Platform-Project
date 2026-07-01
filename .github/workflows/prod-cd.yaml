@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      QA_IMAGE: amahjosh90/nodejs-app:latest
+      QA_IMAGE: amahjosh90/nodejs-app:${{ github.sha }}
       PROD_LATEST_IMAGE: amahjosh90/nodejs-app:prod-${{ github.sha }}
 
     steps:
