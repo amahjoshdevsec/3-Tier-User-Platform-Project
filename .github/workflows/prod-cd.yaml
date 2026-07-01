@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      QA_IMAGE: devopsshack/nodejs-app:latest
-      PROD_LATEST_IMAGE: devopsshack/nodejs-app:prod-${{ github.sha }}
+      QA_IMAGE: amahjosh90/nodejs-app:latest
+      PROD_LATEST_IMAGE: amahjosh90/nodejs-app:prod-${{ github.sha }}
 
     steps:
       - name: Login to Docker Hub
